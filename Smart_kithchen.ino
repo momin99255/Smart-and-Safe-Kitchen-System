@@ -1,6 +1,6 @@
 const int PIR_PIN = 27; 
 const int LDR_PIN = 34; 
-const int LED_PIN = 2;  
+const int LED_PIN = 4; //d2 cant be used for relay 
 
 const int myDarkThreshold = 300; 
 
