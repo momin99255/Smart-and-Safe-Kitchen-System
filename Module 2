@@ -1,0 +1,37 @@
+//Module 2 (incomplete)
+
+const int SMOKE_DIGITAL = 13;
+const int EXHAUST_FAN = 2;   
+
+//still 
+// 1. buzzer & leak detection
+// leak alert on display
+
+
+void setup() {
+  Serial.begin(9600);
+  //MQ low = gas detected
+  pinMode(!SMOKE_DIGITAL, INPUT);
+  pinMode(EXHAUST_FAN, OUTPUT);
+  
+  digitalWrite(EXHAUST_FAN, LOW); 
+  Serial.println("--- CLEAN EXHAUST FAN SYSTEM ONLINE ---");
+}
+
+void loop() {
+  int smokeState = digitalRead(SMOKE_DIGITAL); 
+  
+  Serial.print("Smoke State (Digital 13): "); Serial.println(smokeState);
+
+  if (smokeState == LOW) { 
+    digitalWrite(EXHAUST_FAN, HIGH); 
+    Serial.println("💨 SMOKE DETECTED -> EXHAUST FAN ON");
+  }
+
+  else {
+    digitalWrite(EXHAUST_FAN, LOW); 
+    Serial.println("✅ Clear -> Exhaust Fan OFF");
+  }
+
+  delay(1000);
+}
